@@ -7,7 +7,7 @@ public class Xbowman extends Unit {
         shoots = 16;
     }
 
-    public String toString() {
-        return "Арбалетчик " + super.toString() + ", выстрелы: " + shoots + ", " + state;
+    public String getInfo() {
+        return "Арбалетчик " + super.getInfo() + ", выстрелы: " + shoots + ", " + state;
     }
 }

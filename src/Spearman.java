@@ -5,7 +5,7 @@ public class Spearman extends Unit {
     }
 
     @Override
-    public String toString() {
-        return "Копейщик " + super.toString() + ", " + state;
+    public String getInfo() {
+        return "Копейщик " + super.getInfo() + ", " + state;
     }
 }
