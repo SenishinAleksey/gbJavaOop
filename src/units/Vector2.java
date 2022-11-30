@@ -1,4 +1,4 @@
-package chars;
+package units;
 
 public class Vector2 {
     int x, y;
@@ -12,5 +12,9 @@ public class Vector2 {
 
     public int getY() {
         return y;
+    }
+
+    public double getDistance(Vector2 opposite) {
+        return Math.sqrt(Math.pow(opposite.x - this.x, 2) + Math.pow(opposite.y - this.y, 2));
     }
 }
