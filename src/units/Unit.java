@@ -31,6 +31,7 @@ public abstract class Unit implements UnitInterface {
         this.shoot = shoot;
         this.damage = damage;
         this.maxHealth = health;
+        this.health = health;
         this.speed = speed;
         this.delivery = delivery;
         this.magic = magic;

@@ -45,8 +45,8 @@ public class Main {
             switch (new Random().nextInt(4)) {
                 case 0 -> leftGang.add(new Peasant(leftGang, rightGang, x, y++));
                 case 1 -> leftGang.add(new Robber(leftGang, rightGang, x, y++));
-                default -> leftGang.add(new Sniper(leftGang, rightGang, x, y++));
-//                default -> leftGang.add(new Monk(leftGang, rightGang, x, y++));
+                case 2 -> leftGang.add(new Sniper(leftGang, rightGang, x, y++));
+                default -> leftGang.add(new Monk(leftGang, rightGang, x, y++));
             }
         }
 
