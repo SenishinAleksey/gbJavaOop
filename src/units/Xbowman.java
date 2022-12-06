@@ -1,6 +1,7 @@
 package units;
 
 import java.util.List;
+import java.util.Random;
 
 public class Xbowman extends Unit {
     public Xbowman(List<Unit> gang, List<Unit> enemyGang, int x, int y) {
@@ -9,6 +10,7 @@ public class Xbowman extends Unit {
         super.enemyGang = enemyGang;
         super.position = new Vector2(x, y);
         super.icon = "\uD83C\uDFF9";
+        quantity = new Random().nextInt(2, 8);
     }
 
     @Override

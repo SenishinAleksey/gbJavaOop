@@ -1,6 +1,7 @@
 package units;
 
 import java.util.List;
+import java.util.Random;
 
 public class Sniper extends Unit {
     public Sniper(List<Unit> gang, List<Unit> enemyGang, int x, int y) {
@@ -9,6 +10,7 @@ public class Sniper extends Unit {
         super.enemyGang = enemyGang;
         super.position = new Vector2(x, y);
         super.icon = "\uD83D\uDD2B";
+        quantity = new Random().nextInt(2,4);
     }
 
     @Override

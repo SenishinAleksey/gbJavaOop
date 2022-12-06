@@ -17,4 +17,9 @@ public class Vector2 {
     public double getDistance(Vector2 opposite) {
         return Math.sqrt(Math.pow(opposite.x - this.x, 2) + Math.pow(opposite.y - this.y, 2));
     }
+
+    @Override
+    public String toString() {
+        return "x: " + x + ", y: " + y;
+    }
 }

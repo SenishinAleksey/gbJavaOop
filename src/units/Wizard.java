@@ -1,6 +1,7 @@
 package units;
 
 import java.util.List;
+import java.util.Random;
 
 public class Wizard extends Unit {
     public Wizard(List<Unit> gang, List<Unit> enemyGang, int x, int y) {
@@ -9,6 +10,7 @@ public class Wizard extends Unit {
         super.enemyGang = enemyGang;
         super.position = new Vector2(x, y);
         super.icon = "\uD83E\uDDD9";
+        quantity = new Random().nextInt(1,4);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package units;
 
 import java.util.List;
+import java.util.Random;
 
 public class Monk extends Unit {
 
@@ -10,6 +11,7 @@ public class Monk extends Unit {
         super.enemyGang = enemyGang;
         super.position = new Vector2(x, y);
         super.icon = "\uD83E\uDDD8";
+        quantity = new Random().nextInt(2,5);
     }
 
     @Override

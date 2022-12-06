@@ -2,6 +2,7 @@ package units;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Unit implements UnitInterface {
     private int attack;
@@ -22,12 +23,13 @@ public abstract class Unit implements UnitInterface {
     protected Vector2 position;
     protected String icon;
 
+    protected int quantity;
+
     public Unit(int attack, int defence, int shoot, int[] damage, double health, int speed, boolean delivery, boolean magic, String name) {
         this.attack = attack;
         this.defence = defence;
         this.shoot = shoot;
         this.damage = damage;
-        this.health = health;
         this.maxHealth = health;
         this.speed = speed;
         this.delivery = delivery;
@@ -63,7 +65,7 @@ public abstract class Unit implements UnitInterface {
                 .append(" \uD83D\uDDE1").append(attack)
                 .append(" \uD83D\uDEE1").append(defence)
                 .append(" \uD83D\uDD25").append((damage[0] + damage[1]) / 2)
-                .append(" \uD83D\uDC5F").append(speed);
+                .append(" \uD83D\uDC5F").append(speed).append(' ').append(quantity);
         if (shoot > 0) { info.append(" \uD83D\uDCA5").append(shoot); }
         info.append(']');
         return info.toString();
@@ -77,19 +79,28 @@ public abstract class Unit implements UnitInterface {
     public double getDamage(Unit enemy) {
         int d = enemy.defence - attack;
         if (d == 0) {
-            return (this.damage[0] + this.damage[1]) / 2.0;
+            return ((this.damage[0] + this.damage[1]) / 2.0) * quantity;
         } else if (d < 0) {
-            return this.damage[0];
+            return this.damage[0] * quantity;
         } else {
-            return this.damage[1];
+            return this.damage[1] * quantity;
         }
     }
 
     public void getHit(double damage) {
-        this.health -= damage;
-        if (health <= 0) {
+        double tmpHealth = (quantity - 1) * maxHealth + health;
+        tmpHealth -= damage;
+        if (tmpHealth <= 0) {
             this.health = 0;
             this.status = "Мертв";
+            quantity = 0;
+        } else {
+            quantity = (int) (tmpHealth / maxHealth);
+            health = maxHealth;
+            if (tmpHealth % maxHealth > 0) {
+                quantity++;
+                health = tmpHealth % maxHealth;
+            }
         }
     }
 }
